@@ -27,7 +27,10 @@ from sklearn.model_selection import train_test_split
 def load_data():
     """Download MNIST (70,000 images, 28x28) and scale pixels to 0-1."""
     print("Loading MNIST...")
-    X, y = fetch_openml("mnist_784", version=1, return_X_y=True, as_frame=False)
+    try:
+        X, y = fetch_openml(data_id=554, return_X_y=True, as_frame=False, parser="auto")
+    except Exception:
+        X, y = fetch_openml("mnist_784", version=1, return_X_y=True, as_frame=False)
     X = X / 255.0
     y = y.astype(int)
     return train_test_split(X, y, test_size=0.2, random_state=42)
