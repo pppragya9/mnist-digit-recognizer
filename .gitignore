@@ -42,3 +42,6 @@ Thumbs.db
 # Model checkpoints
 *.joblib
 *.pkl
+
+# Separate projects
+documind_rag/
